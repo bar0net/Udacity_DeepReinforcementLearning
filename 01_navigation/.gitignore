@@ -1,0 +1,7 @@
+/Banana_*/
+/VisualBanana_*/
+/*.log
+
+!/_checkpoints/
+!/_saved_models/
+!/Source/
