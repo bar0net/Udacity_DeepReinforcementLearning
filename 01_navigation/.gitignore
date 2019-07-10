@@ -1,7 +1,9 @@
 /Banana_*/
 /VisualBanana_*/
+/*/__pycache__/
+/_checkpoints/
+
 /*.log
 
-!/_checkpoints/
 !/_saved_models/
 !/Source/

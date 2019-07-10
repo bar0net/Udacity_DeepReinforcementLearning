@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-class DuelingAgent(BaseAgent):
+class DualAgent(BaseAgent):
     def __init__(self, state_size, action_size, replay_buffer,
                  qnetwork_local, qnetwork_target, optimizer,
                  gamma=0.99, alpha=0, beta_initial=0, beta_rate=0,
