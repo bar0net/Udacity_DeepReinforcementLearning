@@ -26,3 +26,24 @@ class Buffer:
     
     def active(self):
         return len(self.memory) >= self.batch_size
+    
+    
+class Window_Buffer(Buffer):
+    def __init__(self, buffer_size=1e5, batch_size=128, window=4, seed=0):
+        super().__init__(buffer_size, batch_size, seed)
+        self.window = window
+    
+    def sample(self):
+        indices = random.sample(np.arange(len(self.memory)-self.window), self.batch_size)
+        
+        states, actions, rewards, next_states, dones = [], [], [], [], []
+        for idx in indices:
+            for j in range(self.window):
+                states.append(self.memory[idx+j].state)
+                actions.append(self.memory[idx+j].action)
+                rewards.append(self.memory[idx+j].reward)
+                next_states.append(self.memory[idx+j].next_state)
+                dones.append(self.memory[idx+j].done)
+                
+        return np.vstack(states), np.vstack(actions), np.vstack(rewards),
+               np.vstack(next_states), np.vstack(dones)
